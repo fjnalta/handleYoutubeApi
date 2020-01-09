@@ -14,7 +14,8 @@ class HandleGoogleApi {
         try {
             yt = await youtube.playlists.list({
                 part : 'snippet',
-                channelId : config.channelId
+                channelId : config.channelId,
+                maxResults : 50
             });
             req.youtubePlaylists = yt.data.items;
 
@@ -53,7 +54,8 @@ class HandleGoogleApi {
             try {
                 yt = await youtube.playlistItems.list({
                     part : 'snippet,id',
-                    playlistId : ids[i]
+                    playlistId : ids[i],
+                    maxResults : 50
                 });
                 res.push(yt.data.items);
             } catch (e) {
