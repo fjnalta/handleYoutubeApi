@@ -22,8 +22,9 @@ class App {
             });
             // create new index
             let result = await youtubeVideos.getPlaylists();
-            console.log(result);
+            //console.log(result);
             fs.writeFileSync(config.outputPath,JSON.stringify(result));
+            console.log('new Youtube Data written');
             return true;
         } else {
             console.log('Error updating youtube Media index');
