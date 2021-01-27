@@ -17,10 +17,13 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
+          echo "Remove current version"
+          cd /home/${{ secrets.SSH_USERNAME }}
+          rm -rf handleYoutubeApi
+          echo "Clone Git Repository"
+          git clone https://github.com/fjnalta/handleYoutubeApi.git
           echo "Change working directory"
           cd handleYoutubeApi
-          echo "Update repository files"
-          git pull origin master
           echo "Install node modules"
           npm install --save
           echo "Fetch youtube data"
